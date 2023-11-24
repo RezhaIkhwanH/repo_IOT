@@ -25,7 +25,8 @@ app.get('/', async function (req, res) {
 })
 
 app.get("/getLastData", async function (req, res) {
-    const lastData = ({ results: dataMeta } = await data.list())[0];
+    const { results: dataMeta } = await data.list()
+    const lastData = dataMeta[0];
 
     const dataResult = (await data.get(lastData.key)).props
     res.send(dataResult);
