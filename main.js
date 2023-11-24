@@ -27,7 +27,7 @@ const seting = db.collection("seting");
 app.get('/', async function (req, res) {
     let item = await seting.get("setingAwal")
     console.log(item);
-    res.send("api run")
+    res.send({ pesan: "api ok", data: item })
 })
 
 app.listen(8080, () => {
