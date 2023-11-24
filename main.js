@@ -25,10 +25,10 @@ app.get('/', async function (req, res) {
 })
 
 app.get("/getData", async function (req, res) {
-    const data = await data.list();
+    const { results: dataMeta } = await data.list();
 
 
-    res.send(data);
+    res.send(dataMeta);
 })
 app.post("/createdData", async function (req, res) {
 
