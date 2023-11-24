@@ -27,8 +27,8 @@ app.get('/', async function (req, res) {
 app.get("/getData", async function (req, res) {
     const { results: dataMeta } = await data.list();
 
-
-    res.send(dataMeta);
+    const data = await Promise.all(dataMeta.map(async ({ key }) => (await bikesCollection.get(key)).props));
+    res.send(data);
 })
 app.post("/createdData", async function (req, res) {
 
