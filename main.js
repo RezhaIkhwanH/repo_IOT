@@ -25,7 +25,10 @@ app.get('/', async function (req, res) {
 })
 
 app.get("/getData", async function (req, res) {
-    res.send(db.collection("data"));
+    const data = await data.list();
+
+
+    res.send(data);
 })
 app.post("/createdData", async function (req, res) {
 
