@@ -19,9 +19,8 @@ const seting = db.collection("seting");
 // })();
 
 app.get('/', async function (req, res) {
-    let item = await seting.get("setingAwal")
-    console.log(item);
-    res.send({ pesan: "api ok", data: item.props })
+
+    res.send({ pesan: "api ok" })
 })
 
 app.get("/getLastData", async function (req, res) {
