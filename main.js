@@ -16,8 +16,12 @@ const seting = db.collection("seting");
 //         cahaya: "500"
 //     })
 // })();
-(function () {
-    console.log('IIFE');
+(async function () {
+    await seting.set("setingAwal", {
+        suhu: "30",
+        kelembapan: "50",
+        cahaya: "500"
+    })
 })();
 
 app.get('/', async function (req, res) {
