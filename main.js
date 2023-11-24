@@ -24,7 +24,14 @@ app.get('/', async function (req, res) {
     res.send({ pesan: "api ok", data: item.props })
 })
 
-app.get("/getData", async function (req, res) {
+app.get("/getLastData", async function (req, res) {
+    const lastData = ({ results: dataMeta } = await data.list())[0];
+
+    const dataResult = (await data.get(lastData)).props
+    res.send(dataResult);
+})
+
+app.get("/getAllData", async function (req, res) {
     const { results: dataMeta } = await data.list();
 
     const dataResult = await Promise.all(
