@@ -10,13 +10,13 @@ const data = db.collection("data");
 const seting = db.collection("seting");
 
 
-// (async function () {
-//     await seting.set("setingAwal", {
-//         suhu: "30",
-//         kelembapan: "50",
-//         cahaya: "500"
-//     })
-// })();
+(async function () {
+    await seting.set("setingAwal", {
+        suhu: "30",
+        kelembapan: "50",
+        cahaya: "500"
+    })
+})();
 
 app.get('/', async function (req, res) {
 
