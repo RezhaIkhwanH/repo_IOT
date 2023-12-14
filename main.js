@@ -7,7 +7,7 @@ const db = require('@cyclic.sh/dynamodb');
 app.use(cros());
 app.use(express.json(true));
 const data = db.collection("data");
-const seting = db.collection("seting");
+const seting = db.collection("Seting");
 
 
 (async function () {
