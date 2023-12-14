@@ -6,12 +6,13 @@ const db = require('@cyclic.sh/dynamodb');
 
 app.use(cros());
 app.use(express.json(true));
-const data = db.collection("data");
-const seting = db.collection("seting");
+
+const data = db.collection("Data");
+const seting = db.collection("Setting");
 
 
 (async function () {
-    await seting.set("setingAwal", {
+    await seting.set("SettingAwal", {
         suhu: "30",
         kelembapan: "50",
         cahaya: "50"
@@ -70,7 +71,7 @@ app.post('/createdSeting', async function (req, res) {
     const suhu = req.body.suhu;
     const cahaya = req.body.cahaya;
     const kelembapan = req.body.kelembapan;
-    await seting.set("seting", {
+    await seting.set("Setting", {
         suhu,
         kelembapan,
         cahaya
@@ -79,7 +80,7 @@ app.post('/createdSeting', async function (req, res) {
 })
 
 app.get('/getSeting', async function (req, res) {
-    let item = await seting.get("seting")
+    let item = await seting.get("Setting")
     const suhu = item.props["suhu"];
     const kelembapan = item.props["kelembapan"];
     const cahaya = item.props["cahaya"];
@@ -87,7 +88,7 @@ app.get('/getSeting', async function (req, res) {
 })
 
 app.get('/getSetingAwal', async function (req, res) {
-    let item = await seting.get("setingAwal");
+    let item = await seting.get("SettingAwal");
     const suhu = item.props["suhu"];
     const kelembapan = item.props["kelembapan"];
     const cahaya = item.props["cahaya"];
