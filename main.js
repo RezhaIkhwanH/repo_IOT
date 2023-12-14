@@ -81,7 +81,9 @@ app.post('/createdSeting', async function (req, res) {
 app.get('/getSeting', async function (req, res) {
     let item = await seting.get("seting")
     const suhu = item.props["suhu"];
-    res.send({ suhu })
+    const kelembapan = item.props["kelembapan"];
+    const cahaya = item.props["cahaya"];
+    res.send({ suhu, kelembapan, cahaya })
 })
 
 app.get('/getSetingAwal', async function (req, res) {
