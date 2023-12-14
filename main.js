@@ -87,8 +87,11 @@ app.get('/getSeting', async function (req, res) {
 })
 
 app.get('/getSetingAwal', async function (req, res) {
-    let item = await seting.get("setingAwal")
-    res.send({ pesan: "api ok", data: item.props })
+    let item = await seting.get("setingAwal");
+    const suhu = item.props["suhu"];
+    const kelembapan = item.props["kelembapan"];
+    const cahaya = item.props["cahaya"];
+    res.send({ suhu, kelembapan, cahaya })
 })
 
 app.listen(8080, () => {
