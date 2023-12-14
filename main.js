@@ -12,9 +12,9 @@ const seting = db.collection("seting");
 
 (async function () {
     await seting.set("setingAwal", {
-        suhu: "30",
-        kelembapan: "50",
-        cahaya: "500"
+        suhu: 30,
+        kelembapan: 50,
+        cahaya: 50
     })
 })();
 
