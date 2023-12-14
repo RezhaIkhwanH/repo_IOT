@@ -80,7 +80,8 @@ app.post('/createdSeting', async function (req, res) {
 
 app.get('/getSeting', async function (req, res) {
     let item = await seting.get("seting")
-    res.send({ pesan: "api ok", data: item.props })
+    const suhu = item.props["suhu"];
+    res.send({ suhu })
 })
 
 app.get('/getSetingAwal', async function (req, res) {
