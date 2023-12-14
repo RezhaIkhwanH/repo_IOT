@@ -12,9 +12,9 @@ const seting = db.collection("Seting");
 
 (async function () {
     await seting.set("setingAwal", {
-        suhu: 30,
-        kelembapan: 50,
-        cahaya: 50
+        suhu: "30",
+        kelembapan: "50",
+        cahaya: "50"
     })
 })();
 
@@ -94,6 +94,6 @@ app.get('/getSetingAwal', async function (req, res) {
     res.send({ suhu, kelembapan, cahaya })
 })
 
-app.listen(8080, () => {
-    console.log(`Example app listening at http://localhost:${8080}`);
+app.listen(5000, () => {
+    console.log(`Example app listening at http://localhost:${5000}`);
 });
