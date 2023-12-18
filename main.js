@@ -1,25 +1,27 @@
 const express = require('express');
 const cros = require("cors");
 const app = express();
-const db = require('@cyclic.sh/dynamodb');
+const CyclicDb = require("@cyclic.sh/dynamodb")
+const db = CyclicDb("uptight-tan-overcoatCyclicDB")
 
 
 app.use(cros());
 app.use(express.json(true));
 
-const data = db.collection("data");
-const seting = db.collection("setting");
+const Data = "data";
+const Seting = "data";
+
+const data = db.collection(Data);
+const seting = db.collection(Seting);
 
 
-(async function () {
-    await seting.set("settingAwal", {
-        suhu: "30",
-        kelembapan: "50",
-        cahaya: "50"
-    })
-
-    console.log("ok");
-})();
+// (async function () {
+//     await seting.set("SettingAwal", {
+//         suhu: "30",
+//         kelembapan: "50",
+//         cahaya: "50"
+//     })
+// })();
 
 app.get('/', async function (req, res) {
 
@@ -47,7 +49,6 @@ app.get("/getAllData", async function (req, res) {
 })
 app.post("/createdData", async function (req, res) {
 
-
     const suhu = req.body.suhu;
     const cahaya = req.body.cahaya;
     const kelembapan = req.body.kelembapan;
@@ -74,7 +75,7 @@ app.post('/createdSeting', async function (req, res) {
     const suhu = req.body.suhu;
     const cahaya = req.body.cahaya;
     const kelembapan = req.body.kelembapan;
-    await seting.set("setting", {
+    await seting.set(Seting, {
         suhu,
         kelembapan,
         cahaya
@@ -83,7 +84,7 @@ app.post('/createdSeting', async function (req, res) {
 })
 
 app.get('/getSeting', async function (req, res) {
-    let item = await seting.get("setting")
+    let item = await seting.get(Seting)
     const suhu = item.props["suhu"];
     const kelembapan = item.props["kelembapan"];
     const cahaya = item.props["cahaya"];
@@ -91,7 +92,7 @@ app.get('/getSeting', async function (req, res) {
 })
 
 app.get('/getSetingAwal', async function (req, res) {
-    let item = await seting.get("settingAwal");
+    let item = await seting.get("SettingAwal");
     const suhu = item.props["suhu"];
     const kelembapan = item.props["kelembapan"];
     const cahaya = item.props["cahaya"];
