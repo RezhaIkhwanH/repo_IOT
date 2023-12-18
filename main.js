@@ -45,6 +45,7 @@ app.get("/getAllData", async function (req, res) {
 })
 app.post("/createdData", async function (req, res) {
 
+
     const suhu = req.body.suhu;
     const cahaya = req.body.cahaya;
     const kelembapan = req.body.kelembapan;
