@@ -8,11 +8,8 @@ const db = CyclicDb("uptight-tan-overcoatCyclicDB")
 app.use(cros());
 app.use(express.json(true));
 
-const Data = "data";
-const Seting = "data";
-
-const data = db.collection(Data);
-const seting = db.collection(Seting);
+const data = db.collection("Data");
+const seting = db.collection("Setting");
 
 
 (async function () {
@@ -75,7 +72,7 @@ app.post('/createdSeting', async function (req, res) {
     const suhu = req.body.suhu;
     const cahaya = req.body.cahaya;
     const kelembapan = req.body.kelembapan;
-    await seting.set(Seting, {
+    await seting.set("Setting", {
         suhu,
         kelembapan,
         cahaya
@@ -84,7 +81,7 @@ app.post('/createdSeting', async function (req, res) {
 })
 
 app.get('/getSeting', async function (req, res) {
-    let item = await seting.get(Seting)
+    let item = await seting.get("Setting")
     const suhu = item.props["suhu"];
     const kelembapan = item.props["kelembapan"];
     const cahaya = item.props["cahaya"];
