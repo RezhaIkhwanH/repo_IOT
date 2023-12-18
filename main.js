@@ -17,6 +17,8 @@ const seting = db.collection("Setting");
         kelembapan: "50",
         cahaya: "50"
     })
+
+    console.log("ok");
 })();
 
 app.get('/', async function (req, res) {
